@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en-US" class="bg1">
+<head>
+    <meta charset="utf-8">
+    <title>Colors</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      html {
+        align-items: center;
+        display: flex;
+        font: 1.5em system-ui, sans-serif;
+        height: 100%;
+        justify-content: center;
+      }
+      #hint {
+        color: #ddd;
+        mix-blend-mode: difference;
+        opacity: 0;
+        transition: opacity 1s;
+        user-select: none;
+      }
+      #hint.visible {
+        opacity: 1;
+      }
+
+      .bg1 { background: #000 }
+      .bg2 { background: #fff }
+      .bg3 { background: #f00 }
+      .bg4 { background: #0f0 }
+      .bg5 { background: #00f }
+      .bg6 { background: linear-gradient(#fff, #000) }
+      .bg7 { background: linear-gradient(#0000, #000), linear-gradient(90deg, #fff0, #f00) }
+      .bg8 { background: linear-gradient(#0000, #000), linear-gradient(90deg, #fff0, #0f0) }
+      .bg9 { background: linear-gradient(#0000, #000), linear-gradient(90deg, #fff0, #00f) }
+    </style>
+</head>
+<body>
+<div id="hint">click me</div>
+
+<script>
+  var currentIndex = 1;
+  var clicked = false;
+
+  var $html = document.documentElement;
+  var $hint = document.getElementById('hint');
+
+  document.addEventListener('click', function() {
+    if ($html.requestFullscreen && !clicked) {
+      $html.requestFullscreen();
+      clicked = true;
+      return;
+    }
+
+    currentIndex = currentIndex > 8 ? 1 : currentIndex + 1;
+    $html.className = `bg${currentIndex}`;
+  });
+
+  document.addEventListener('mousemove', function() {
+    $hint.className = 'visible';
+    setTimeout(function() { $hint.className = '' }, 1000);
+  });
+</script>
+</body>
+</html>
