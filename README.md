@@ -6,4 +6,4 @@ Checks:
 - Dead pixels
 - Dynamic range (gradients)
 
-[Start](http://megahertz.github.io/monitor-test)
+[Start](https://megahertz.github.io/monitor-test/)
